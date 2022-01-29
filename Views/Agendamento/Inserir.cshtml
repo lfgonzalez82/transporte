@@ -1,0 +1,63 @@
+@model Agendamento
+
+@Html.AntiForgeryToken()
+
+<form asp-action="Inserir">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="DataAgendameto" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DataAgendameto" class="form-control"  />
+                <span asp-validation-for="DataAgendameto"  class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Horario.Periodo" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="HorarioId" asp-items="@ViewBag.Horarios" class="form-control"></select>
+                <span asp-validation-for="HorarioId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TipoTransporte.Tipo" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TipoTransporteId" asp-items="@ViewBag.TiposTransporte" class="form-control"></select>
+                <span asp-validation-for="TipoTransporteId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TipoCarga.Carga" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TipoCargaId" asp-items="@ViewBag.TiposCarga" class="form-control"></select>
+                <span asp-validation-for="TipoCargaId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="QuantidadeAgendada" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="QuantidadeAgendada" class="form-control" />
+                <span asp-validation-for="QuantidadeAgendada" class="text-danger"></span>
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Inserir" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Retornar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

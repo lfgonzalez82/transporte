@@ -1,0 +1,30 @@
+@model TipoCarga
+
+@Html.AntiForgeryToken()
+
+<form asp-action="Inserir">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Carga" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Carga" class="form-control" />
+                <span asp-validation-for="Carga" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Inserir" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Retornar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
