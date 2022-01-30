@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,12 +46,63 @@ public class AgendamentoService : IAgendamentoService
     public async Task<List<Agendamento>> RetornaAgendamentos(bool status)
     {
 
-        //return await _contexto.Agendamentos.ToListAsync();
         return await _contexto.Agendamentos
                                   .Include(horario => horario.Horario)
                                   .Include(tipoCarga => tipoCarga.TipoCarga)
                                   .Include(tipoTransporte => tipoTransporte.TipoTransporte)
                                   .Where(a => a.Status == status)
+                                  .OrderByDescending(ag => ag.DataAgendameto)
                                   .ToListAsync();
     }
+
+    public async Task<List<IGrouping<string, Agendamento>>> RetornaAgendamentosAgrupadosPorData()
+    {
+        List<Agendamento> listaAgendamentos = await RetornaAgendamentos(true);
+
+        var dataGrupo = from data in listaAgendamentos
+                        group data by data.DataAgendameto.ToShortDateString() into grupoData
+                        select grupoData;
+
+        return dataGrupo.ToList();
+
+    
+    }
+
+    public async Task<List<IGrouping<string, Agendamento>>> RetornaAgendamentosAgrupadosPorPeriodo()
+    {
+        List<Agendamento> listaAgendamentos = await RetornaAgendamentos(true);
+
+        var periodoGrupo = from periodo in listaAgendamentos
+                           group periodo by periodo.Horario.Periodo into grupoPeriodo
+                           select grupoPeriodo;
+
+        return periodoGrupo.ToList();
+        
+    }
+
+    public async Task<List<IGrouping<string, Agendamento>>> RetornaAgendamentosAgrupadosPorTipoCarga()
+    {
+        List<Agendamento> listaAgendamentos = await RetornaAgendamentos(true);
+
+        var tipoCargaGrupo = from tipoCarga in listaAgendamentos
+                             group tipoCarga by tipoCarga.TipoCarga.Carga into grupoCarga
+                             select grupoCarga;
+
+        return tipoCargaGrupo.ToList();
+                    
+    }
+
+    public async Task<List<IGrouping<string, Agendamento>>> RetornaAgendamentosAgrupadosPorTipoTransporte()
+    {
+        List<Agendamento> listaAgendamentos = await RetornaAgendamentos(true);
+
+        var tipoTransporteGrupo = from tipoTransporte in listaAgendamentos
+                                  group tipoTransporte by tipoTransporte.TipoTransporte.Tipo into grupoTransporte
+                                  select grupoTransporte;
+
+        return tipoTransporteGrupo.ToList();
+
+    }
+
+    
 }

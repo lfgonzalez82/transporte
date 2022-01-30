@@ -132,4 +132,22 @@ public class AgendamentoController : Controller {
         return RedirectToAction("Index");
     }
 
+    public IActionResult GrupoTipoTransporteAgendamento() {
+        
+        return View(_agendamentoService.RetornaAgendamentosAgrupadosPorTipoTransporte().Result);
+    }
+
+    public IActionResult GrupoDataAgendamento() {
+        
+        return View(_agendamentoService.RetornaAgendamentosAgrupadosPorData().Result);
+    }
+
+    public IActionResult GrupoPeriodoAgendamento() {
+        
+        return View(_agendamentoService.RetornaAgendamentosAgrupadosPorPeriodo().Result);
+    }
+
+    public IActionResult GrupoTipoCargaAgendamento() {
+        return View(_agendamentoService.RetornaAgendamentosAgrupadosPorTipoCarga().Result);
+    }
 }

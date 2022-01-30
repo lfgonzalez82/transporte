@@ -6,6 +6,10 @@
     <title>@ViewData["Title"] - Transporte</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    
+    
+    
 </head>
 <body>
     <header>
@@ -40,6 +44,10 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="Index">Cadastrar</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="GrupoTipoTransporteAgendamento">Agendamento por Tipo de Transporte</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="GrupoDataAgendamento">Agendamentos por Data</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="GrupoPeriodoAgendamento">Agendamentos por Período</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="GrupoTipoCargaAgendamento">Agendamentos por Tipo de Carga</a>
                             </div>
                         </li>
                             
@@ -63,6 +71,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/25fe35192d.js" crossorigin="anonymous"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
