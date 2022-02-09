@@ -15,6 +15,14 @@
         </div>
 
         <div class="form-group">
+            <label asp-for="TipoAgendamento.Descricao" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="TipoAgendamentoId" asp-items="@ViewBag.TiposAgendamento" class="form-control"></select>
+                <span asp-validation-for="TipoAgendamentoId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label asp-for="Horario.Periodo" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <select asp-for="HorarioId" asp-items="@ViewBag.Horarios" class="form-control"></select>

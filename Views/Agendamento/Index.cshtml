@@ -12,6 +12,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Data</th>
+                                        <th>Tipo Agendamento</th>
                                         <th>Horario</th>
                                         <th>Tipo Transporte</th>
                                         <th>Tipo Carga</th>
@@ -32,6 +33,7 @@
                                         
                     @Html.DisplayFor(modelItem => item.DataAgendameto)
                                     </td>
+                                    <td>@Html.DisplayFor(modelItem => item.TipoAgendamento.Descricao)</td>
                                     <td>
                     @Html.DisplayFor(modelItem => item.Horario.Periodo)
                                     </td>

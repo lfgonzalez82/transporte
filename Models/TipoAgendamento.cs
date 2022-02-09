@@ -3,6 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 public class TipoAgendamento {
 
+
+    public TipoAgendamento(){
+        this.Status = true;
+    }
+
     [Required]
     public int Id { get; set; }
     

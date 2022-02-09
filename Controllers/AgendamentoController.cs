@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 public class AgendamentoController : Controller {
     private readonly IAgendamentoService _agendamentoService;
+
+    private readonly ITipoAgendamentoService _tipoAgendamentoService;
     private readonly IHorarioService _horarioService;
     private readonly ITipoCargaService _tipoCargaService;
     private readonly ITipoTransporteService _tipoTransporteService;
 
     public AgendamentoController(IAgendamentoService agendamentoService, 
+                                 ITipoAgendamentoService tipoAgendamentoService,
                                  IHorarioService horarioService,
                                  ITipoCargaService tipoCargaService,
                                  ITipoTransporteService tipoTransporteService)
     {
         _agendamentoService = agendamentoService;
+        _tipoAgendamentoService = tipoAgendamentoService;
         _horarioService = horarioService;
         _tipoCargaService = tipoCargaService;
         _tipoTransporteService = tipoTransporteService;
@@ -29,6 +33,12 @@ public class AgendamentoController : Controller {
 
     public IActionResult Inserir() {
         
+        
+        carregaViewBags();        
+        return View();
+    }
+
+    private void carregaViewBags() {
         ViewBag.Horarios = _horarioService.RetornaHorarios(true)
                                                     .Result
                                                     .Select(h => new SelectListItem(){ 
@@ -44,9 +54,12 @@ public class AgendamentoController : Controller {
                                                         .Select(tt => new SelectListItem() {
                                                             Text = tt.Tipo, Value= tt.Id.ToString()
                                                         });
-        
-        
-        return View();
+
+        ViewBag.TiposAgendamento = _tipoAgendamentoService.RetornaTiposAgendamento(true)
+                                                        .Result
+                                                        .Select(ta => new SelectListItem() {
+                                                            Text = ta.Descricao, Value = ta.Id.ToString()
+                                                        });
     }
 
     [HttpPost]
@@ -64,7 +77,7 @@ public class AgendamentoController : Controller {
     public async Task<IActionResult> Editar(int? id)
     {
         
-        ViewBag.Horarios = _horarioService.RetornaHorarios(true)
+        /*ViewBag.Horarios = _horarioService.RetornaHorarios(true)
                                                     .Result
                                                     .Select(h => new SelectListItem(){ 
                                                         Text= h.Periodo.ToString(), Value=h.Id.ToString()
@@ -78,7 +91,9 @@ public class AgendamentoController : Controller {
                                                         .Result
                                                         .Select(tt => new SelectListItem() {
                                                             Text = tt.Tipo, Value= tt.Id.ToString()
-                                                        });
+                                                        });*/
+
+        carregaViewBags();
 
         if (id == null)
         {

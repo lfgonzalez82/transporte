@@ -50,6 +50,7 @@ public class AgendamentoService : IAgendamentoService
                                   .Include(horario => horario.Horario)
                                   .Include(tipoCarga => tipoCarga.TipoCarga)
                                   .Include(tipoTransporte => tipoTransporte.TipoTransporte)
+                                  .Include(tipoAgendamento => tipoAgendamento.TipoAgendamento)
                                   .Where(a => a.Status == status)
                                   .OrderByDescending(ag => ag.DataAgendameto)
                                   .ToListAsync();
