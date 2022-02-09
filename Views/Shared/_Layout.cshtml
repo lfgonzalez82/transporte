@@ -32,6 +32,7 @@
                                 Cadastros Básicos
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item text-dark" asp-area="" asp-controller="TipoAgendamento" asp-action="Index">Tipo Agendamento</a>
                                 <a class="dropdown-item text-dark" asp-area="" asp-controller="Horario" asp-action="Index">Horarios</a>
                                 <a class="dropdown-item text-dark" asp-area="" asp-controller="TipoCarga" asp-action="Index">Tipo Carga</a>
                                 <a class="dropdown-item text-dark" asp-area="" asp-controller="TipoTransporte" asp-action="Index">Tipo Transporte</a>
@@ -44,6 +45,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="Index">Cadastrar</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="GrupoTipoAgendamento">Agendmaento por Tipo Agendamento</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="GrupoTipoTransporteAgendamento">Agendamento por Tipo de Transporte</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="GrupoDataAgendamento">Agendamentos por Data</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Agendamento" asp-action="GrupoPeriodoAgendamento">Agendamentos por Período</a>

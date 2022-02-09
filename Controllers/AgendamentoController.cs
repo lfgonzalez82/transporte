@@ -150,4 +150,8 @@ public class AgendamentoController : Controller {
     public IActionResult GrupoTipoCargaAgendamento() {
         return View(_agendamentoService.RetornaAgendamentosAgrupadosPorTipoCarga().Result);
     }
+
+    public IActionResult GrupoTipoAgendamento() {
+        return View(_agendamentoService.RetornaAgendamentosAgrupadosPorTipoAgendamento().Result);
+    }
 }
