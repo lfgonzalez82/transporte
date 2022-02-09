@@ -104,5 +104,13 @@ public class AgendamentoService : IAgendamentoService
 
     }
 
+    public async Task<List<IGrouping<string,Agendamento>>> RetornaAgendamentosAgrupadosPorTipoAgendamento() {
+        List<Agendamento> listaAgendamentos = await RetornaAgendamentos(true);
+        var tipoAgendamentoGrupo = from tipoAgendamento in listaAgendamentos
+                                   group tipoAgendamento by tipoAgendamento.TipoAgendamento.Descricao into grupoTipoAgendamento
+                                   select grupoTipoAgendamento;
+        return tipoAgendamentoGrupo.ToList();
+    }
+
     
 }

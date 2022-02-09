@@ -25,6 +25,7 @@
         <td>
            <table class="table table-striped table-bordered nowrap" style="width:100%">
                   <thead>
+            <th>Tipo Agendamento</th>
             <th>Horario</th>
             <th>Tipo Carga</th>
             <th>Tipo Transporte</th>
@@ -34,6 +35,7 @@
           @foreach (var agendamento in item)
     {
         <tr>
+            <td>@Html.DisplayFor(m => agendamento.TipoAgendamento.Descricao)</td>
             <td>@Html.DisplayFor(m => agendamento.Horario.Periodo)</td>
             <td>@Html.DisplayFor(m => agendamento.TipoCarga.Carga)</td>
             <td>@Html.DisplayFor(m => agendamento.TipoTransporte.Tipo)</td>

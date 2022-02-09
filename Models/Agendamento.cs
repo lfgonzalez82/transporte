@@ -25,6 +25,11 @@ public class Agendamento {
     public Horario Horario {get;set;}
 
     [Required]
+    public int TipoAgendamentoId { get; set; }
+
+    public TipoAgendamento TipoAgendamento { get; set; }
+
+    [Required]
     public int TipoTransporteId { get; set; }
 
     public TipoTransporte TipoTransporte {get; set;}

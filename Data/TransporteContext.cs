@@ -9,6 +9,8 @@ public class TransporteContext : DbContext {
         public DbSet<Horario> Horarios {get;set; }
         public DbSet<TipoCarga> TipoCargas {get;set;}
 
+        public DbSet<TipoAgendamento> TiposAgendamento{get;set;}
+
         public DbSet<Agendamento> Agendamentos {get; set;}
         protected override void OnModelCreating(ModelBuilder builder)
         {
