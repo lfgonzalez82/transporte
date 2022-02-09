@@ -25,5 +25,7 @@ public interface IAgendamentoService {
 
     public Task<List<IGrouping<string,Agendamento>>> RetornaAgendamentosAgrupadosPorTipoCarga();
 
+    public Task<List<IGrouping<string,Agendamento>>> RetornaAgendamentosAgrupadosPorTipoAgendamento();
+
 
 }
