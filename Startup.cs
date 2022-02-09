@@ -28,7 +28,7 @@ namespace Transporte
             services.AddDbContext<TransporteContext>(options =>
                 options.UseSqlite(connection)
             );
-
+            services.AddTransient<ITipoAgendamentoService,TipoAgendamentoService>();
             services.AddTransient<IHorarioService,HorarioService>();
             services.AddTransient<ITipoCargaService, TipoCargaService>();
             services.AddTransient<ITipoTransporteService, TipoTransporteService>();
